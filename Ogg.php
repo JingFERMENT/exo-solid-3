@@ -1,14 +1,15 @@
 <?php
 
 require_once 'MusicType.php';
+require_once (__DIR__.'/InvalidExtensionException.php');
 
 class Ogg extends MusicType
 {
-    public function listen()
+    public function listen(): string
     {
         $extension = pathinfo($this->filename, PATHINFO_EXTENSION);
         if ($extension !== 'ogg') {
-            throw new Exception("Fichier Ogg attendu mais ''$extension'' obtenu");
+            throw new InvalidExtensionException('Ogg', $extension);
         }
 
         return 'Lecture du fichier Ogg '. $this->filename;

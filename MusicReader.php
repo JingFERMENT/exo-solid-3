@@ -1,6 +1,7 @@
 <?php
 
-// Si on ajoute un nouveau format, cette classe ne change plus :-)
+require_once(__DIR__.'/UnknownExtensionException.php');
+
 class MusicReader
 {
     private $musicType;
@@ -12,7 +13,7 @@ class MusicReader
         $extension = pathinfo($this->musicType->getFilename(), PATHINFO_EXTENSION);
         
         if (empty($extension)) {
-            throw new Exception('Les fichiers sans extension ne sont pas acceptés.');
+            throw new UnknownExtensionException();
         }
     }
 

@@ -1,6 +1,8 @@
 <?php
 
-abstract class MusicType
+require_once(__DIR__.'/MusicTypeInterface.php');
+
+abstract class MusicType implements MusicTypeInterface
 {
     protected $filename;
 
@@ -14,5 +16,5 @@ abstract class MusicType
         return $this->filename;
     }
 
-    abstract public function listen();
+    abstract public function listen(): string;
 }
